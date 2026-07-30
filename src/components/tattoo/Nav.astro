@@ -1,0 +1,24 @@
+---
+import type { Negocio, Nav } from '../../data/tipos';
+import T from './T.astro';
+import '../../css/tattoo/nav.css';
+
+interface Props {
+  negocio: Negocio;
+  nav: Nav;
+}
+const { negocio, nav } = Astro.props;
+
+// El logo resalta en rojo el primer "_" del nombre, si lo hay.
+const i = negocio.nombre.indexOf('_');
+const pre = i === -1 ? negocio.nombre : negocio.nombre.slice(0, i);
+const post = i === -1 ? '' : negocio.nombre.slice(i + 1);
+---
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="logo">{pre}{i !== -1 && <span>_</span>}{post}</div>
+    <div class="nav-right">
+      <a class="nav-cta btn btn-primary" href={negocio.whatsapp}><T es={nav.cta.es} ca={nav.cta.ca} /></a>
+    </div>
+  </div>
+</header>

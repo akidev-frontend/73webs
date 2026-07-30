@@ -1,0 +1,22 @@
+---
+import type { Negocio, CtaFinal, Estilos, Formulario as FormularioDatos } from '../../data/tipos';
+import T from './T.astro';
+import Formulario from './Formulario.astro';
+import '../../css/tattoo/cta-final.css';
+
+interface Props {
+  negocio: Negocio;
+  ctaFinal: CtaFinal;
+  estilos: Estilos;
+  formulario: FormularioDatos;
+}
+const { negocio, ctaFinal, estilos, formulario } = Astro.props;
+---
+<section class="final">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center"><T es={ctaFinal.eyebrow.es} ca={ctaFinal.eyebrow.ca} /></div>
+    <h2><T es={ctaFinal.titulo.es} ca={ctaFinal.titulo.ca} /></h2>
+    <p><T es={ctaFinal.texto.es} ca={ctaFinal.texto.ca} /></p>
+    <Formulario negocio={negocio} formulario={formulario} estilos={estilos} />
+  </div>
+</section>

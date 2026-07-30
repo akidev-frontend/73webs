@@ -1,0 +1,17 @@
+---
+import type { Resena } from '../../data/tipos';
+import T from './T.astro';
+import '../../css/tattoo/resena.css';
+
+interface Props {
+  resena: Resena;
+}
+const { resena } = Astro.props;
+---
+<section class="trust">
+  <div class="wrap">
+    <div class="stars">{'★'.repeat(resena.estrellas)}</div>
+    <p class="trust-quote"><T es={resena.cita.es} ca={resena.cita.ca} /></p>
+    <p class="trust-name">— {resena.autor}, <T es={resena.fuente.es} ca={resena.fuente.ca} /></p>
+  </div>
+</section>

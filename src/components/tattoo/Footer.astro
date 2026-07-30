@@ -1,0 +1,24 @@
+---
+import type { Negocio, Footer } from '../../data/tipos';
+import T from './T.astro';
+import '../../css/tattoo/footer.css';
+
+interface Props {
+  negocio: Negocio;
+  footer: Footer;
+}
+const { negocio, footer } = Astro.props;
+---
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <div class="logo" style="margin-bottom:8px">{negocio.nombre}</div>
+      <div class="foot-contact">
+        <a href={`tel:${negocio.telefono}`}>{negocio.telefono}</a>
+        <a href={`mailto:${negocio.email}`}>{negocio.email}</a>
+        <span>{negocio.direccion}, {negocio.ciudad}</span>
+      </div>
+    </div>
+    <div class="made"><T es={footer.creditos.es} ca={footer.creditos.ca} /> <a href="https://73webs.com">73webs</a></div>
+  </div>
+</footer>

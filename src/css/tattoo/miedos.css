@@ -1,0 +1,6 @@
+/* Miedos.astro */
+.pain-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:28px; margin-top:64px; }
+.pain-card{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:28px; }
+.pain-card h3{ font-size:18px; margin-bottom:10px; color:var(--ink); }
+.pain-card p{ color:var(--muted); font-size:15px; }
+.pain-card .x{ color:var(--accent); font-family:var(--mono); font-size:13px; margin-bottom:14px; display:block; }

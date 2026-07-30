@@ -1,0 +1,26 @@
+---
+import type { Miedos } from '../../data/tipos';
+import T from './T.astro';
+import '../../css/tattoo/miedos.css';
+
+interface Props {
+  miedos: Miedos;
+}
+const { miedos } = Astro.props;
+---
+<section class="pain">
+  <div class="wrap">
+    <div class="eyebrow"><T es={miedos.eyebrow.es} ca={miedos.eyebrow.ca} /></div>
+    <h2 class="lead-head"><T es={miedos.titulo.es} ca={miedos.titulo.ca} /></h2>
+    <p class="sub"><T es={miedos.sub.es} ca={miedos.sub.ca} /></p>
+    <div class="pain-grid">
+      {miedos.items.map((m) => (
+        <div class="pain-card">
+          <span class="x"><T es={m.etiqueta.es} ca={m.etiqueta.ca} /></span>
+          <h3><T es={m.titulo.es} ca={m.titulo.ca} /></h3>
+          <p><T es={m.texto.es} ca={m.texto.ca} /></p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

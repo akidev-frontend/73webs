@@ -1,0 +1,36 @@
+---
+import type { Negocio, Estilos, Formulario as FormularioDatos } from '../../data/tipos';
+import { formulario as etiquetasPorDefecto, type EtiquetasFormulario } from '../../data/ui';
+import T from './T.astro';
+import '../../css/tattoo/formulario.css';
+
+interface Props {
+  negocio: Negocio;
+  formulario: FormularioDatos;
+  estilos: Estilos;
+  etiquetas?: EtiquetasFormulario;
+}
+const { negocio, formulario, estilos, etiquetas = etiquetasPorDefecto } = Astro.props;
+---
+<form class="form" action={formulario.action} method="POST">
+  <input type="hidden" name="_subject" value={formulario.asunto}>
+  <input type="hidden" name="_captcha" value="false">
+  <div class="form-row">
+    <div class="field"><label for="f-nombre"><T es={etiquetas.nombre.es} ca={etiquetas.nombre.ca} /></label><input id="f-nombre" name="nombre" type="text" required autocomplete="name"></div>
+    <div class="field"><label for="f-email">{etiquetas.email}</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+  </div>
+  <div class="field"><label for="f-tel"><T es={etiquetas.telefono.es} ca={etiquetas.telefono.ca} /></label><input id="f-tel" name="telefono" type="tel" autocomplete="tel"></div>
+  <fieldset class="field">
+    <legend><T es={etiquetas.estilo.es} ca={etiquetas.estilo.ca} /></legend>
+    <div class="checks">
+      {estilos.items.map((e) => (
+        <label class="check"><input type="checkbox" name="servicio" value={e.nombre}><span>{e.nombre}</span></label>
+      ))}
+    </div>
+  </fieldset>
+  <div class="field"><label for="f-msg"><T es={etiquetas.mensaje.es} ca={etiquetas.mensaje.ca} /></label><textarea id="f-msg" name="mensaje" rows="4" required></textarea></div>
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit"><T es={etiquetas.enviar.es} ca={etiquetas.enviar.ca} /></button>
+    <a class="btn btn-ghost" href={negocio.whatsapp}><T es={etiquetas.whatsapp.es} ca={etiquetas.whatsapp.ca} /></a>
+  </div>
+</form>

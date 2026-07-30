@@ -1,0 +1,68 @@
+---
+import type { Cliente } from '../../data/tipos';
+import BgAnim from './BgAnim.astro';
+import LangSwitch from './LangSwitch.astro';
+import '../../css/tattoo/base.css';
+
+interface Props {
+  cliente: Cliente;
+}
+const { cliente } = Astro.props;
+const { negocio, seo } = cliente;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TattooParlor',
+  name: negocio.nombre,
+  image: negocio.imagen,
+  description: seo.jsonLdDescription,
+  telephone: negocio.telefono,
+  email: negocio.email,
+  url: negocio.url,
+  priceRange: negocio.priceRange,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: negocio.direccion,
+    addressLocality: negocio.ciudad,
+    addressCountry: 'ES',
+  },
+  openingHours: negocio.horario,
+  sameAs: [negocio.instagram],
+};
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{seo.title}</title>
+<meta name="description" content={seo.description}>
+<link rel="canonical" href={seo.canonical}>
+
+<meta property="og:type" content="business.business">
+<meta property="og:title" content={seo.title}>
+<meta property="og:description" content={seo.ogDescription}>
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Asap:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+</head>
+<body>
+
+<BgAnim />
+
+<slot />
+
+<LangSwitch />
+
+<script>
+  import '../../js/tattoo/lang.js';
+  import '../../js/tattoo/reveal.js';
+</script>
+</body>
+</html>

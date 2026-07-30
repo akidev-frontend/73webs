@@ -1,0 +1,25 @@
+---
+import type { Estilos } from '../../data/tipos';
+import T from './T.astro';
+import '../../css/tattoo/estilos.css';
+
+interface Props {
+  estilos: Estilos;
+}
+const { estilos } = Astro.props;
+---
+<section class="pain">
+  <div class="wrap">
+    <div class="eyebrow"><T es={estilos.eyebrow.es} ca={estilos.eyebrow.ca} /></div>
+    <h2 class="lead-head"><T es={estilos.titulo.es} ca={estilos.titulo.ca} /></h2>
+    <div class="svc-grid">
+      {estilos.items.map((e) => (
+        <div class="svc">
+          <h3>{e.nombre}</h3>
+          <p><T es={e.texto.es} ca={e.texto.ca} /></p>
+          <span class="price"><T es={e.precio.es} ca={e.precio.ca} /></span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

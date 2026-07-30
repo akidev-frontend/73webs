@@ -1,0 +1,38 @@
+---
+// Ensamblador del template Tattoo: monta los componentes en el orden de la
+// página original y reparte los datos del cliente. El shell (<html>, <head>,
+// BgAnim, LangSwitch, lang.js, reveal.js) lo aporta Layout.astro, que se aplica
+// desde src/pages/. El CSS no se importa aquí: cada componente importa el suyo.
+import type { Cliente } from '../data/tipos';
+import Nav from '../components/tattoo/Nav.astro';
+import Hero from '../components/tattoo/Hero.astro';
+import Miedos from '../components/tattoo/Miedos.astro';
+import Proceso from '../components/tattoo/Proceso.astro';
+import Estilos from '../components/tattoo/Estilos.astro';
+import Resena from '../components/tattoo/Resena.astro';
+import CtaFinal from '../components/tattoo/CtaFinal.astro';
+import Footer from '../components/tattoo/Footer.astro';
+
+interface Props {
+  cliente: Cliente;
+}
+const { cliente } = Astro.props;
+---
+
+<Nav negocio={cliente.negocio} nav={cliente.nav} />
+
+<main>
+  <Hero negocio={cliente.negocio} hero={cliente.hero} />
+  <Miedos miedos={cliente.miedos} />
+  <Proceso proceso={cliente.proceso} />
+  <Estilos estilos={cliente.estilos} />
+  <Resena resena={cliente.resena} />
+  <CtaFinal
+    negocio={cliente.negocio}
+    ctaFinal={cliente.ctaFinal}
+    estilos={cliente.estilos}
+    formulario={cliente.formulario}
+  />
+</main>
+
+<Footer negocio={cliente.negocio} footer={cliente.footer} />

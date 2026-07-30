@@ -1,0 +1,8 @@
+---
+import Layout from '../components/tattoo/Layout.astro';
+import TattooTemplate from '../templates/TattooTemplate.astro';
+import cliente from '../data/clientes/prueba-aguja-fria';
+---
+<Layout cliente={cliente}>
+  <TattooTemplate cliente={cliente} />
+</Layout>

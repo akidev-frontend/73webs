@@ -1,0 +1,16 @@
+node_modules
+dist
+.astro
+.git
+.gitignore
+.vscode
+.claude
+.env
+.env.*
+npm-debug.log*
+*.md
+briefs
+Dockerfile
+.dockerignore
+.DS_Store
+.idea

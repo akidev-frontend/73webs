@@ -1,0 +1,5 @@
+---
+// Par de textos ES/CA. styles/base.css muestra solo el del html[lang] activo.
+const { es, ca } = Astro.props;
+---
+<span data-l="es" set:html={es}></span><span data-l="ca" set:html={ca}></span>

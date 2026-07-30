@@ -1,0 +1,28 @@
+---
+import type { Proceso } from '../../data/tipos';
+import T from './T.astro';
+import '../../css/tattoo/proceso.css';
+
+interface Props {
+  proceso: Proceso;
+}
+const { proceso } = Astro.props;
+---
+<section id={proceso.id}>
+  <div class="wrap">
+    <div class="eyebrow"><T es={proceso.eyebrow.es} ca={proceso.eyebrow.ca} /></div>
+    <h2 class="lead-head"><T es={proceso.titulo.es} ca={proceso.titulo.ca} /></h2>
+    <p class="sub"><T es={proceso.sub.es} ca={proceso.sub.ca} /></p>
+    <div class="sol-list">
+      {proceso.items.map((p, i) => (
+        <div class="sol-item">
+          <span class="num">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h3><T es={p.titulo.es} ca={p.titulo.ca} /></h3>
+            <p><T es={p.texto.es} ca={p.texto.ca} /></p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

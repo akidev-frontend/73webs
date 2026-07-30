@@ -1,0 +1,22 @@
+---
+import type { Negocio, Hero } from '../../data/tipos';
+import T from './T.astro';
+import '../../css/tattoo/hero.css';
+
+interface Props {
+  negocio: Negocio;
+  hero: Hero;
+}
+const { negocio, hero } = Astro.props;
+---
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><T es={hero.eyebrow.es} ca={hero.eyebrow.ca} /></div>
+    <h1><T es={hero.titulo.es} ca={hero.titulo.ca} /></h1>
+    <p class="lead"><T es={hero.lead.es} ca={hero.lead.ca} /></p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={negocio.whatsapp}><T es={hero.ctaPrimario.es} ca={hero.ctaPrimario.ca} /></a>
+      <a class="btn btn-ghost" href={hero.hrefSecundario}><T es={hero.ctaSecundario.es} ca={hero.ctaSecundario.ca} /></a>
+    </div>
+  </div>
+</section>
