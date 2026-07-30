@@ -1,0 +1,40 @@
+---
+import '../css/main.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — 73webs</title>
+<meta name="description" content="Página no encontrada">
+<link rel="canonical" href="https://73webs.com/404">
+
+<link rel="icon" type="image/svg+xml" href="/73-logo.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Asap:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<Nav />
+
+<main style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:140px 32px 100px;">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#A1A7B3;display:flex;align-items:center;gap:10px;margin-bottom:22px;">
+    <span style="width:22px;height:1px;background:#A1A7B3;display:inline-block;"></span>
+    Error
+  </span>
+  <h1 style="font-family:'Plus Jakarta Sans','Asap',sans-serif;font-weight:800;font-size:clamp(5rem,12vw,9rem);line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,#FF8A00,#FF5B00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0;">404</h1>
+  <p style="font-size:clamp(1.1rem,2.2vw,1.4rem);color:#C7CBD6;max-width:40ch;margin:16px 0 0;line-height:1.6;">
+    Esa página no existe. Igual que tu negocio sin web propia.
+  </p>
+  <a href="/" class="btn btn-gold" style="margin-top:40px;">Volver a casa</a>
+</main>
+
+<Footer />
+
+</body>
+</html>
